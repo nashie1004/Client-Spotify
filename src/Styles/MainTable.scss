@@ -1,0 +1,106 @@
+$white: white;
+$border-color: #282828;
+$card-hover-color-bg: rgba(47,40,65, .45);
+$table-top-info-bg-color: linear-gradient(to bottom right, #513A9F, #2A1F52);
+$nav-bg-color: #010a0d;
+
+$liked: linear-gradient(to bottom right, #3F13B9, #7B8F88);
+$album: linear-gradient(to bottom right, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+$artist: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
+$playlist: linear-gradient(180.2deg, rgb(30, 33, 48) 6.8%, rgb(74, 98, 110) 131%);
+
+.main{
+    width: 100%;
+    section{position: relative;}
+    .liked{background: $liked;}
+    .album{background: $album;}
+    .artist{background: $artist;}
+    .playlist{background: $playlist;}
+
+    .table-top-info{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        height: 270px;
+        padding-left: 2rem;
+
+        .heart-gradient{
+            width: 220px;
+            height: 220px;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        span{
+            h6{
+                font-size: .8rem;
+            }
+            h1{
+                font-size: 4rem;
+            }
+        }
+    }
+
+    //FOR TABLE GRID
+    @mixin grid-mixin{
+        padding-inline: 2rem;
+        display: grid;
+        grid-template-columns: 37px 2fr 1.5fr .6fr .6fr;
+    }
+
+    .table{
+        margin-top: 2rem;
+        width: 100%;
+
+        .table-head{
+            @include grid-mixin();
+            border-bottom: 1px solid $border-color;
+            position: sticky;
+            top: 70px;
+            z-index: 4;
+            // background-color: $liked;
+        }
+
+
+        .table-body{
+            @include grid-mixin();
+            position: relative;
+        
+            .song-info-span{
+                display: flex;
+                gap: .7rem;
+
+                img{
+                    width: 50px;
+                    height: 50px;         
+                }
+                span{
+                    display: flex;
+                    flex-direction: column;
+                    gap: .3rem;
+                    padding-top: .3rem;
+                }
+            }
+
+            & > *:not(.song-info-span){
+                display: flex;
+                align-items: center;
+            }
+
+            &:hover{
+                background: $card-hover-color-bg;
+            }
+        }
+
+        .table-head > *, .table-body > *{
+            padding: .35rem;
+        }
+
+        .last-div-flex-end{
+            display: flex;
+            justify-content: flex-end;
+
+        }
+    }
+}

@@ -1,0 +1,121 @@
+$card-hover-color-bg: rgba(47,40,65, .45);
+$border-color: #282828;
+$black: #000000;
+$footer-bg-color: #031217;
+$limegreen: limegreen;
+
+.main{
+    .card-col-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .card-col{
+            display: flex;
+            width: 380px;  
+            backdrop-filter: blur(5px);
+            border-radius: .4rem;
+            align-items: center;
+            gap: 1.2rem;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid $border-color;
+            cursor: pointer;
+            position: relative;
+
+            img{
+                width: 80px;
+                height: 80px;
+            }
+
+            &:hover{
+                background-color: $card-hover-color-bg;
+            }
+
+            &:hover > .play-btn{
+                right: 20px;
+                opacity: 1;
+            }
+        }
+    }
+
+    .card-row-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .card-row{
+            border-radius: .4rem;
+            outline: 1px solid $border-color;
+            padding: .8rem;
+            max-width: calc(190px + .8rem + .8rem);
+            cursor: pointer;
+            position: relative;
+
+            &:hover{
+                background-color: $card-hover-color-bg;
+            }
+            &:hover > .card-row-info > .play-btn{
+                right: 20px;
+                opacity: 1;
+            }
+
+            img{
+                box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+                width: 190px;
+                height: 190px;
+            }
+
+            .card-row-info{
+                height: 80px;
+                overflow: hidden;
+                line-height: 25px;
+                
+            }
+        }
+    }
+    
+    .play-btn{
+        opacity: 0;
+        background-color: $limegreen;
+        width: 50px;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        right: 0px;
+        transition: opacity .3s ease-in-out, right .18s ease-in-out;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        // border: 2px solid $black;
+    }
+    .row{
+        bottom: 105px;
+    }
+    .col{
+        //
+    }
+    .big{
+        bottom: 25px;
+    }
+    .table-body:hover > .song-info-span > .liked-btn{
+        display: block;
+    }
+    .liked-btn{
+        display: none;
+        position: absolute;
+        left: 89px;
+        top: 17px;
+        cursor: pointer;
+    }
+    .results-btn{
+        position: absolute;
+        top: 13px;
+        left: 11px;
+        display: none;
+        cursor: pointer;
+    }
+    .result-cards:hover > div > .results-btn{
+        display: block;
+    }
+}
