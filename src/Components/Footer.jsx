@@ -29,7 +29,8 @@ export default function Footer() {
     ARTISTNAME = currentPlayingSong.footerSongArtist
     CURRENTINDEX = currentPlayingSong.footerSongIndex
     audio.current.volume = 0.3
-  } else {
+  } 
+  else if (currentPlayingSong.footerSongURL === null) {
     audio.current.src = '';
     IMG = ''
     SONGNAME = ''

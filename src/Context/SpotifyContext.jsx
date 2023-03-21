@@ -7,6 +7,7 @@ const BASE_URL = 'https://api.spotify.com/v1'
 
 const SpotifyProvider = ({children}) => {
     const [songs, setSongs] = useState([]);
+    const [songTableCoverImage, setSongTableCoverImage] = useState({});
     const [songType, setSongType] = useState('');
     const [loading, setLoading] = useState(false);
     const [hamburgerOptions, setHamburgerOptions] = useState([]);
@@ -52,7 +53,9 @@ const SpotifyProvider = ({children}) => {
                 hamburgerOptions,
                 setHamburgerOptions,
                 currentPlayingSong,
-                setCurrentPlayingSong
+                setCurrentPlayingSong,
+                songTableCoverImage,
+                setSongTableCoverImage
             }}>
             {children}
         </SpotifyContext.Provider>

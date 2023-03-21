@@ -7,15 +7,14 @@ import Hamburger from './Hamburger'
 export default function TableBodyItem(props) {
     const {linkType, name, artistName, imageURL, index, songURL, songDuration, artistId, id} = props;
     
-    let redirectType = ''
-    if (linkType !== 'artist'){
-        redirectType = `/tracks/${id}`
-    } else {
-        redirectType = `/album/${id}`
+    let redirectNameH4 = `/`;
+    if (linkType === 'artist'){
+        redirectNameH4 = `/album/${id}`
+    } else if (true){
+        redirectNameH4 = `/artist/${artistId}`
     }
     
     // NOTE: LINKTYPE AND ID (FOR TRACK) NOT THE SAME
-    let redirectNameH4 = `/`;
     let redirectArtistP = `/artist/${artistId}`;
 
     return (
@@ -32,7 +31,7 @@ export default function TableBodyItem(props) {
                 footerSongIndex={index}
                 size='liked' 
             />
-            <img src={imageURL} alt="song-img" />
+            <img src={imageURL} alt="profile" />
             <span>
                 <Link to={redirectNameH4}> 
                     <p>{name}</p>

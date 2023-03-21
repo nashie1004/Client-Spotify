@@ -11,7 +11,7 @@ import {SpotifyContext} from '../Context/SpotifyContext';
 export default function MainTable({type}) {
   const [addSticky, setAddSticky] = useState(false);
   
-  const {songs, songType, loading} = useContext(SpotifyContext);
+  const {songs, songType, loading, songTableCoverImage} = useContext(SpotifyContext);
 
   function addStickyHeader(e){
     if (e.target.scrollTop > 275){
@@ -49,12 +49,28 @@ export default function MainTable({type}) {
       <NavDisplayBtn />
       <div className={boxBgClass}>
         <div className={boxClass}>
-          <FavoriteIcon fontSize='large' />
+          {
+            type === 'playlist' || type === 'album'
+            ? <img className='cover-image' src={songTableCoverImage.coverIMG} alt="cover-img" />
+            : <FavoriteIcon fontSize='large' /> 
+          }
         </div>
         <span>
-          <h6>Playlist</h6>
-          <h1>{type}</h1>
-          <h6>Lorem, ipsum dolor.</h6>
+          <h6>{type}</h6>
+          <h1>
+            {
+              type === 'playlist' || type === 'album' 
+              ? songTableCoverImage.coverName.slice(0, 12)
+              : 'ARTIST'
+            }
+          </h1>
+          <h6>
+            {
+              type === 'playlist' || type === 'album' 
+              ? songTableCoverImage.coverOwner
+              : '123123123123'
+            }
+          </h6>
         </span>
       </div>
       <div className="table">
@@ -69,7 +85,7 @@ export default function MainTable({type}) {
            <h4>Preview Mp3</h4>
           </div>
           <div>
-            <h4>Duration</h4>
+            <h4>{songType === 'artist' || songType === 'album' ? 'Release' : 'Duration'}</h4>
           </div>
           <div className='last-div-flex-end'>
             <h4>Actions</h4>
@@ -81,11 +97,20 @@ export default function MainTable({type}) {
             (
               songs.map((item, i) => {
                 let imgURL = ''
-                try {
-                  imgURL = item.album.images[0].url
-                } catch (err) {
-                  imgURL = ''
-                  // console.log('ERROR ITEM AT: ', i)
+                if (songType === 'artist'){
+                  try {
+                    imgURL = item.images[0].url
+                  } catch (err) {
+                    imgURL = ''
+                    // console.log('ERROR ITEM AT: ', i)
+                  }
+                } else if (songType === 'album') {
+                  try {
+                    imgURL = songTableCoverImage.coverIMG
+                  } catch (err) {
+                    imgURL = ''
+                    // console.log('ERROR ITEM AT: ', i)
+                  }
                 }
                 return <TableBodyItem
                   linkType={songType} 
@@ -95,7 +120,7 @@ export default function MainTable({type}) {
                   index={i}
                   key={i} 
                   songURL={item.preview_url}
-                  songDuration={item.duration_ms} 
+                  songDuration={songType === 'album' ? item.duration_ms : item.release_date} 
                   artistId={item.artists[0].id} 
                   id={item.id}
                 />
