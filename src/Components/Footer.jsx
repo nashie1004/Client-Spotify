@@ -1,4 +1,4 @@
-import React, {useContext, useState, useRef} from 'react'
+import React, {useContext, useRef} from 'react'
 import '../Styles/Footer.scss'
 
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
@@ -12,19 +12,30 @@ import VolumeDownIcon from '@mui/icons-material/VolumeDown';
 import { SpotifyContext } from '../Context/SpotifyContext';
 
 export default function Footer() {
-  const {currentPlayingSong} = useContext(SpotifyContext);
+  const {currentPlayingSong, setCurrentPlayingSong, songs} = useContext(SpotifyContext);
   const audio = useRef(null);
-  
+
   let IMG = '';
   let SONGNAME = '';
   let ARTISTNAME = '';
+  let CURRENTINDEX = null;
+
+  let randomize = false;
 
   if (Object.keys(currentPlayingSong).length !== 0 && currentPlayingSong.footerSongURL !== null){
     audio.current.src = currentPlayingSong.footerSongURL
     IMG = currentPlayingSong.footerSongImage
     SONGNAME = currentPlayingSong.footerSongName
     ARTISTNAME = currentPlayingSong.footerSongArtist
-    audio.current.play()
+    CURRENTINDEX = currentPlayingSong.footerSongIndex
+    audio.current.volume = 0.3
+  } else {
+    audio.current.src = '';
+    IMG = ''
+    SONGNAME = ''
+    ARTISTNAME = ''
+    CURRENTINDEX = '';
+    CURRENTINDEX = currentPlayingSong.footerSongIndex
     audio.current.volume = 0.3
   }
 
@@ -37,9 +48,36 @@ export default function Footer() {
       }
     }
   }
-
   function adjustVolume(e){
     audio.current.volume = e.target.value / 100
+  }
+  function moveBtn(num){
+    let idx = null;
+    if (randomize === false){
+      if (CURRENTINDEX + num > songs.length - 1){
+        CURRENTINDEX = 0;
+      } else if (CURRENTINDEX + num < 0){
+        CURRENTINDEX = songs.length;
+      }
+      idx = CURRENTINDEX + num;
+    } else {
+      idx = Math.floor(Math.random() * songs.length);
+    }
+    setCurrentPlayingSong({
+      footerSongIndex: idx, 
+      footerSongURL: songs[idx].track.preview_url, 
+      footerSongName: songs[idx].track.name, 
+      footerSongArtist: songs[idx].track.artists[0].name, 
+      footerSongImage: songs[idx].track.album.images[0].url
+    })
+  }
+  function shuffle(){
+    randomize = !randomize;
+    console.log('shuffle status:', randomize);
+  }
+  function replay(){
+    audio.current.loop = !audio.current.loop;
+    console.log('loop status:', audio.current.loop)
   }
 
   return (
@@ -52,15 +90,12 @@ export default function Footer() {
         </span>
       </div>
       <div className='mid-footer'>
-        <ShuffleIcon fontSize='large' />
-        <SkipPreviousIcon fontSize='large' />
+        <ShuffleIcon fontSize='large' onClick={shuffle}/>
+        <SkipPreviousIcon fontSize='large' onClick={() => moveBtn(-1)} />
         <PlayCircleIcon fontSize='large' onClick={playAudio} />
-        <SkipNextIcon fontSize='large' />
-        <ReplayIcon fontSize='large' />
+        <SkipNextIcon fontSize='large' onClick={() => moveBtn(1)}/>
+        <ReplayIcon fontSize='large' onClick={replay}/>
         <audio ref={audio} src=''>
-          {/* <IconButton aria-label="previous song">
-            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
-          </IconButton> */}
         </audio>
       </div>
       <div className='right-footer'>

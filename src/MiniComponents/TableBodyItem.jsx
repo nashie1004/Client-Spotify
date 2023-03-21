@@ -29,6 +29,7 @@ export default function TableBodyItem(props) {
                 footerSongName={name} 
                 footerSongArtist={artistName} 
                 footerSongImage={imageURL}
+                footerSongIndex={index}
                 size='liked' 
             />
             <img src={imageURL} alt="song-img" />

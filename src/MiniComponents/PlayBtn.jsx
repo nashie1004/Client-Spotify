@@ -3,25 +3,25 @@ import '../Styles/MainHome.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { SpotifyContext } from '../Context/SpotifyContext';
 
-export default function PlayBtn({type, size, footerSongURL, footerSongName, footerSongArtist, footerSongImage}) {
+export default function PlayBtn({type, size, footerSongIndex, footerSongURL, footerSongName, footerSongArtist, footerSongImage}) {
     const {setCurrentPlayingSong} = useContext(SpotifyContext);
     
-    let class0 = ''
+    let stylingClass = ''
     if (type === 'row'){
-        class0 = 'play-btn row'
+        stylingClass = 'play-btn row'
     } else if (type === 'col'){
-        class0 = 'play-btn col'
+        stylingClass = 'play-btn col'
     } else if (type === 'big'){
-        class0 = 'play-btn big'
+        stylingClass = 'play-btn big'
     }
 
     function handleSong(){
-        setCurrentPlayingSong({footerSongURL, footerSongName, footerSongArtist, footerSongImage})
+        setCurrentPlayingSong({footerSongIndex, footerSongURL, footerSongName, footerSongArtist, footerSongImage})
     }
 
     if (size === 'regular'){
         return (
-            <div className={class0}>
+            <div className={stylingClass}>
                 <PlayArrowIcon color="action" onClick={handleSong}/>
             </div>
         )
