@@ -22,7 +22,7 @@ export default function Footer() {
 
   let randomize = false;
 
-  if (Object.keys(currentPlayingSong).length !== 0 && currentPlayingSong.footerSongURL !== null){
+  if (Object.keys(currentPlayingSong).length !== 0 && currentPlayingSong.footerSongURL){
     audio.current.src = currentPlayingSong.footerSongURL
     IMG = currentPlayingSong.footerSongImage
     SONGNAME = currentPlayingSong.footerSongName

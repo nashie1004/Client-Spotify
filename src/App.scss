@@ -60,18 +60,80 @@ body{
                 padding: .5rem;
                 right: 0;
                 z-index: 2;
-                min-width: 200px;
-                
-                p{
-                    cursor: pointer;
-                    width: 100%;
-                    padding: .6rem;
-                    font-size: .86rem;
+                min-width: 90px;
+                min-height: 30px;
 
-                    &:hover{
-                        background: $card-hover-color-bg;
+                p{
+                    padding: .5rem 1rem;
+                    padding-left: .4rem;
+                }
+
+                p:hover{
+                    background: $card-hover-color-bg;
+                    cursor: pointer;
+                }
+
+                .add, .remove{
+                    min-width: 120px;
+                    position: relative;
+                }
+
+                .addOptions, .removeOptions{
+                    position: absolute;
+                    z-index: 2;
+                    left: -170px;
+                    top: -.5rem;
+                    background: $nav-bg-color;
+                    padding: .5rem;
+                    max-width: 170px;
+                    display: none;
+
+                    p {
+                        min-width: 100%;
                     }
                 }
+
+                .add:hover > .addOptions{
+                    display: block;
+                }
+                .remove:hover > .removeOptions{
+                    display: block;
+                }
+                
+                // .add-dropdown, .remove-dropdown{
+                //     position: relative;
+
+                //     p{
+                //         position: relative;
+                //         min-width: 100px;
+                //         padding: .5rem 1rem;
+                //         padding-left: .4rem;
+
+                //         &:hover{
+                //             cursor: pointer;
+                //             background-color: $card-hover-color-bg;
+                //         }
+                //     }
+
+                //     .p-hover-show-options{
+                //         position: relative;
+
+                //         .options-display-none{
+                //             background: $nav-bg-color;
+                //             display: none;
+                //             position: absolute;
+                //             z-index: 2;
+                //             padding: .5rem;
+                //             right: 100px;
+                //             min-width: 200px;
+                //             top: calc(-.5rem);
+                //         }
+                //         &:hover > .options-display-none {
+                //             display: block;
+                //         }
+                //     }
+
+                // }
             }
         }
         

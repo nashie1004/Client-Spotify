@@ -16,16 +16,16 @@ function App() {
       <SpotifyProvider>
         <BrowserRouter>
           <Nav /> 
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/liked' element={<Table type={'liked'} />} />
-              <Route path='/genre/:id' element={<Browse />} />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/liked' element={<Table type={'liked'} />} />
+            <Route path='/genre/:id' element={<Browse />} />
 
-              <Route path='/album/:id' element={<Table type={'album'} />} />
-              <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
-              <Route path='/artist/:id' element={<Table type={'artist'} />} />
-            </Routes>
+            <Route path='/album/:id' element={<Table type={'album'} />} />
+            <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
+            <Route path='/artist/:id' element={<Table type={'artist'} />} />
+          </Routes>
           <Footer />
         </BrowserRouter>
       </SpotifyProvider>

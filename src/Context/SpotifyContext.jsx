@@ -22,14 +22,14 @@ const SpotifyProvider = ({children}) => {
             const objToken = await token.json();
             access_token = objToken.access_token;
             
-            //GET REQUEST
-            const options = {
+            // REQUEST
+            let options = {
                 method: METHOD,
                 headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': 'Bearer ' + access_token
-                },
-                json: true
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "Authorization": 'Bearer ' + access_token
+                }
             }
             const data = await fetch(BASE_URL + ENDPOINT, options);
             const obj = await data.json();

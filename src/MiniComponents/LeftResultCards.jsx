@@ -26,7 +26,7 @@ export default function LeftResultCards(props) {
         <p>{artistName}</p>
       </span>
       <p>{duration}</p>
-      <Hamburger />
+      <Hamburger optionType={'addToATrack'} />
     </div>
   )
 }

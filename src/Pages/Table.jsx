@@ -37,7 +37,6 @@ export default function Table({type}) {
         setSongs(data.tracks.items)
         setLoading(false)
         
-        console.log(data)
         const coverIMG = data.images[0].url;
         const coverName = data.name;
         const coverOwner = data.artists[0].name;
@@ -63,47 +62,3 @@ export default function Table({type}) {
     </>
   )
 }
-
-
-
-
-/*
-async function call(){
-    switch (type){
-
-      case 'artist':
-        const artist = await fetchFunction(`/artists/${ID}`, 'GET')
-        const artistAlbums = await fetchFunction(`/artists/${artist.id}/albums`, 'GET')
-        artistAlbums['items'].map((item, i) => {
-          const obj = {
-            name: item.name
-          }
-          insert(obj)
-        })
-        break;
-
-      case 'playlist':
-        const playlists = await fetchFunction(`/playlists/${ID}`, 'GET')
-        playlists['tracks']['items'].map((item, i) => {
-          //
-        })
-        break;
-
-      case 'album':
-        const albums = await fetchFunction(`/albums/${ID}`, 'GET')
-        albums['tracks']['items'].map((item, i) => {
-          //
-        })
-        break;
-
-      default:
-        const likedSongs = await fetchFunction('/me/tracks?&limit=50', 'GET')
-        likedSongs['items'].map((item, i) => {
-          //document.location.href
-        })
-        break;
-
-    }
-  }
-  call();
-*/

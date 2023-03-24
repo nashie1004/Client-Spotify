@@ -50,7 +50,14 @@ export default function TableBodyItem(props) {
             <p>{songDuration}</p>
         </div>
         <div className='other-actions last-div-flex-end'>
-            <Hamburger />
+            <Hamburger 
+                optionType={
+                    linkType === 'artist'  ? 
+                    'addToAlbum' : 
+                    'addToATrack'
+                } 
+                toAddId={{name, id}}
+            />
         </div>
     </div>
   )
