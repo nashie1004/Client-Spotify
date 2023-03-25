@@ -2,6 +2,7 @@ import React, {useContext, useRef} from 'react'
 import '../Styles/Footer.scss'
 
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import ReplayIcon from '@mui/icons-material/Replay';
@@ -93,7 +94,12 @@ export default function Footer() {
       <div className='mid-footer'>
         <ShuffleIcon fontSize='large' onClick={shuffle}/>
         <SkipPreviousIcon fontSize='large' onClick={() => moveBtn(-1)} />
-        <PlayCircleIcon fontSize='large' onClick={playAudio} />
+        {
+          audio ? 
+          <PauseCircleIcon fontSize='large' onClick={playAudio} />
+          :
+          <PlayCircleIcon fontSize='large' onClick={playAudio} />
+        }
         <SkipNextIcon fontSize='large' onClick={() => moveBtn(1)}/>
         <ReplayIcon fontSize='large' onClick={replay}/>
         <audio ref={audio} src=''>

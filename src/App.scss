@@ -99,41 +99,7 @@ body{
                 .remove:hover > .removeOptions{
                     display: block;
                 }
-                
-                // .add-dropdown, .remove-dropdown{
-                //     position: relative;
 
-                //     p{
-                //         position: relative;
-                //         min-width: 100px;
-                //         padding: .5rem 1rem;
-                //         padding-left: .4rem;
-
-                //         &:hover{
-                //             cursor: pointer;
-                //             background-color: $card-hover-color-bg;
-                //         }
-                //     }
-
-                //     .p-hover-show-options{
-                //         position: relative;
-
-                //         .options-display-none{
-                //             background: $nav-bg-color;
-                //             display: none;
-                //             position: absolute;
-                //             z-index: 2;
-                //             padding: .5rem;
-                //             right: 100px;
-                //             min-width: 200px;
-                //             top: calc(-.5rem);
-                //         }
-                //         &:hover > .options-display-none {
-                //             display: block;
-                //         }
-                //     }
-
-                // }
             }
         }
         
@@ -158,6 +124,7 @@ body{
         section{
             overflow-y: scroll;
             height: 100%;
+            min-width: 100%;
 
             &::-webkit-scrollbar {width: 10px;}
             // &::-webkit-scrollbar-track {background: $nav-bg-color;}

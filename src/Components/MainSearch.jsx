@@ -80,21 +80,23 @@ export default function MainSearch() {
       <section onScroll={scrollHeader}>
         <HeaderStickyScroll opacityState={opacity} child={<input onChange={displaySearchResult} className='search-bar' type='text' placeholder='Search...' /> } />
         <NavDisplayBtn />
-        <h2>Lorem, ipsum.</h2>
-        <div className='card-box-container'>
-          {
-            categories.map((item, i) => {
-              return (
-                <CardBox 
-                  key={i}
-                  name={item.name}
-                  id={item.id}
-                  image={item.icons[0].url}
-                  color={COLORS[Math.floor(Math.random() * COLORS.length)]} 
-                />
-              );
-            })
-          }
+        <div className="padding" style={{padding: '1rem', minWidth: '100%'}}>
+          <h2>Lorem, ipsum.</h2>
+          <div className='card-box-container'>
+            {
+              categories.map((item, i) => {
+                return (
+                  <CardBox 
+                    key={i}
+                    name={item.name}
+                    id={item.id}
+                    image={item.icons[0].url}
+                    color={COLORS[Math.floor(Math.random() * COLORS.length)]} 
+                  />
+                );
+              })
+            }
+          </div>
         </div>
       </section>
     )
@@ -104,74 +106,76 @@ export default function MainSearch() {
       <section onScroll={scrollHeader}>
         <HeaderStickyScroll opacityState={opacity} child={<input onChange={displaySearchResult} className='search-bar' type='text' placeholder='Search...' /> } />
         <NavDisplayBtn />
-        <h2>Search Result</h2>
-        <div className="result-container">
-          <div className="result-left">
-            {
-              resultRight.map((item, i) => {
-                if (i === 0){
-                  return (
-                    <>
-                      <div className="big-img">
-                        <img src={item.album.images[0].url} alt="" />
-                      </div>
-                      <Link to={`/artist/${item.artists[0].id}`}>
-                        <h2>{item.name}</h2>
-                      </Link>
-                      <p>{item.artists[0].name}</p>
-                      <PlayBtn 
-                        size='regular' 
-                        type='big' 
-                        footerSongURL={item.preview_url} 
-                        footerSongName={item.name} 
-                        footerSongArtist={item.artists[0].name} 
-                        footerSongImage={item.album.images[0].url}
+        <div className="padding" style={{padding: '1rem', minWidth: '100%'}}>
+          <h2>Search Result</h2><br />
+          <div className="result-container">
+            <div className="result-left">
+              {
+                resultRight.map((item, i) => {
+                  if (i === 0){
+                    return (
+                      <>
+                        <div className="big-img">
+                          <img src={item.album.images[0].url} alt="" />
+                        </div>
+                        <Link to={`/artist/${item.artists[0].id}`}>
+                          <h2>{item.name}</h2>
+                        </Link>
+                        <p>{item.artists[0].name}</p>
+                        <PlayBtn 
+                          size='regular' 
+                          type='big' 
+                          footerSongURL={item.preview_url} 
+                          footerSongName={item.name} 
+                          footerSongArtist={item.artists[0].name} 
+                          footerSongImage={item.album.images[0].url}
+                        />
+                      </>
+                    )
+                  }
+                })
+              }
+            </div>
+            <div className="result-right">
+              {
+                resultRight.map((item, i) => {
+                  if (i !== 0){
+                    return (
+                      <LeftResultCards
+                        image={item.album.images[0].url}
+                        artistName={item.artists[0].name}
+                        name={item.name}
+                        preview_url={item.preview_url}
+                        releaseDate={item.release_date}
+                        duration={(item.duration_ms / 60000).toString().slice(0, 4).replace('.', ':')}
+                        id={item.artists[0].id}
+                        key={i}
                       />
-                    </>
-                  )
-                }
-              })
-            }
+                    )
+                  }
+                })
+              }
+            </div>
           </div>
-          <div className="result-right">
+          <br />
+          <div className="card-row-container">
             {
-              resultRight.map((item, i) => {
-                if (i !== 0){
-                  return (
-                    <LeftResultCards
-                      image={item.album.images[0].url}
-                      artistName={item.artists[0].name}
-                      name={item.name}
-                      preview_url={item.preview_url}
-                      releaseDate={item.release_date}
-                      duration={item.duration_ms}
-                      id={item.artists[0].id}
-                      key={i}
-                    />
-                  )
-                }
+              resultBottom.map((item, i) => {
+                return (
+                  <CardRowContainer
+                    image={item.album.images[0].url}
+                    artistName={item.artists[0].name}
+                    name={item.name}
+                    preview_url={item.preview_url}
+                    releaseDate={item.release_date}
+                    id={item.artists[0].id}
+                    key={i}
+                    linkType={'artist'}
+                  />
+                )
               })
             }
           </div>
-        </div>
-        <br />
-        <div className="card-row-container">
-          {
-            resultBottom.map((item, i) => {
-              return (
-                <CardRowContainer
-                  image={item.album.images[0].url}
-                  artistName={item.artists[0].name}
-                  name={item.name}
-                  preview_url={item.preview_url}
-                  releaseDate={item.release_date}
-                  id={item.artists[0].id}
-                  key={i}
-                  linkType={'artist'}
-                />
-              )
-            })
-          }
         </div>
       </section>
     )

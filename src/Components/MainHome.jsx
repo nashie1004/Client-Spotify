@@ -6,6 +6,7 @@ import HeaderStickyScroll from './HeaderStickyScroll'
 import NavDisplayBtn from '../MiniComponents/NavDisplayBtn'
 
 import {SpotifyContext} from '../Context/SpotifyContext'
+import { padding, width } from '@mui/system'
 
 export default function MainHome() {
   const [opacity, setOpacity] = useState(false)
@@ -44,40 +45,43 @@ export default function MainHome() {
     <section onScroll={scrollHeader}>
       <HeaderStickyScroll opacityState={opacity} />
       <NavDisplayBtn />
-      <h2>Newly Released</h2>
-      <div className='card-col-container'>
-        {
-          cardColItems.map((item, i) => {
-            return (
-              <CardCol
-                image={item.images[0].url}
-                name={item.name}
-                isPlayable={item.is_playable}
-                id={item.id}
-                key={i}
-              />
-            )
-          })
-        }
-      </div>
-      <br />
-      <div className="card-row-container">
-        {
-          cardRowItems.map((item, i) => {
-            return (
-              <CardRowContainer
-                image={item.images[0].url}
-                artistName={null}
-                name={item.name}
-                releaseDate={item.release_date}
-                id={item.id}
-                preview_url={null}
-                key={i}
-                linkType={'album'}
-              />
-            )
-          })
-        }
+      <div className="padding" style={{padding: '1rem', minWidth: '100%'}}>
+        <h2>Newly Released</h2>
+        <br />
+        <div className='card-col-container'>
+          {
+            cardColItems.map((item, i) => {
+              return (
+                <CardCol
+                  image={item.images[0].url}
+                  name={item.name}
+                  isPlayable={item.is_playable}
+                  id={item.id}
+                  key={i}
+                />
+              )
+            })
+          }
+        </div>
+        <br />
+        <div className="card-row-container">
+          {
+            cardRowItems.map((item, i) => {
+              return (
+                <CardRowContainer
+                  image={item.images[0].url}
+                  artistName={null}
+                  name={item.name}
+                  releaseDate={item.release_date}
+                  id={item.id}
+                  preview_url={null}
+                  key={i}
+                  linkType={'album'}
+                />
+              )
+            })
+          }
+        </div>
       </div>
     </section>
   )
