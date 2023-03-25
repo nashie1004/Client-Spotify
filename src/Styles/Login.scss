@@ -1,0 +1,46 @@
+$limegreen: limegreen;
+$white: white;
+$black: black;
+$border-color: rgb(180, 173, 173);
+
+.login{
+    background: $white;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+    .form-login{
+        border: 1px solid $border-color;
+        min-height: 300px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .brand{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+    
+            .fa-spotify{
+                color: $black;
+                font-size: 2.6rem;
+            }
+
+            h1{color: $black;}
+            
+        }
+        button{
+            width: 200px;
+            border-radius: 2rem;
+            border: none;
+            background: $limegreen;
+            color: $white;
+            padding: .8rem 2rem;
+            font-size: 1.2rem;
+        }
+    }
+}

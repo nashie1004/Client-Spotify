@@ -12,6 +12,7 @@ const SpotifyProvider = ({children}) => {
     const [loading, setLoading] = useState(false);
     const [hamburgerOptions, setHamburgerOptions] = useState([]);
     const [currentPlayingSong, setCurrentPlayingSong] = useState({})
+    const [savedPlaylists, setSavedPlaylists] = useState([])
 
     async function fetchFunction(ENDPOINT, METHOD){
         let access_token = null;
@@ -55,7 +56,9 @@ const SpotifyProvider = ({children}) => {
                 currentPlayingSong,
                 setCurrentPlayingSong,
                 songTableCoverImage,
-                setSongTableCoverImage
+                setSongTableCoverImage,
+                savedPlaylists,
+                setSavedPlaylists
             }}>
             {children}
         </SpotifyContext.Provider>

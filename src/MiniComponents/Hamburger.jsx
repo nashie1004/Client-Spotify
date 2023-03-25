@@ -76,25 +76,24 @@ export default function Hamburger({optionType, toAddId}) {
 
             </div>
           </div>
-          <div className="remove">
+          {/* <div className="remove">
             <p>Remove</p>
             <div className="removeOptions">
 
               <p onClick={() => call('REMOVE_FROM_LIKED')}>Liked Songs</p>
-              {/*
-                hamburgerOptions.map((playlist, i) => {
-                  if (playlist.name && playlist.name !== ''){
-                    return (
-                      <p onClick={() => call('REMOVE_FROM_PLAYLIST', playlist.id)}>
-                        {playlist.name.slice(0, 15)}...
-                      </p>
-                    )
-                  }
-                })
-              */}
-
-            </div>
-          </div>
+                {
+                  hamburgerOptions.map((playlist, i) => {
+                    if (playlist.name && playlist.name !== ''){
+                      return (
+                        <p onClick={() => call('REMOVE_FROM_PLAYLIST', playlist.id)}>
+                          {playlist.name.slice(0, 15)}...
+                        </p>
+                      )
+                    }
+                  })
+                }
+            </div> 
+          </div> */}
         </div>
       </div>
     )

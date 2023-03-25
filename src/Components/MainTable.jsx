@@ -62,17 +62,17 @@ export default function MainTable({type}) {
             }
           </div>
           <span>
-            <h6>{type !== 'artist' ? type : ''}</h6>
+            <h6>{/*type !== 'artist' || type === 'liked' ? type : ''*/}</h6>
             <h1>
               {
                 type === 'playlist' || type === 'album' 
-                ? 'TEST' //(songTableCoverImage.coverName.slice(0, 12) && songTableCoverImage.coverName.slice(0, 12))
-                : 'ARTIST'
+                ? (songTableCoverImage.coverName.slice(0, 12) && songTableCoverImage.coverName.slice(0, 12))
+                : (type === 'liked' ? 'LIKED' : 'ARTIST')
               }
             </h1>
             <h6>
               {
-                type === 'playlist' || type === 'album' 
+                type === 'playlist' || type === 'album'
                 ? songTableCoverImage.coverOwner
                 : ''
               }

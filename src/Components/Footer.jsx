@@ -1,4 +1,4 @@
-import React, {useContext, useRef} from 'react'
+import React, {useContext, useRef, useState} from 'react'
 import '../Styles/Footer.scss'
 
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
@@ -16,6 +16,8 @@ export default function Footer() {
   const {currentPlayingSong, setCurrentPlayingSong, songs} = useContext(SpotifyContext);
   const audio = useRef(null);
 
+  let playing = null;
+  
   let IMG = '';
   let SONGNAME = '';
   let ARTISTNAME = '';
@@ -30,8 +32,10 @@ export default function Footer() {
     ARTISTNAME = currentPlayingSong.footerSongArtist
     CURRENTINDEX = currentPlayingSong.footerSongIndex
     audio.current.volume = 0.3
+    playing = true;
   } 
   else if (currentPlayingSong.footerSongURL === null) {
+    playing = false;
     audio.current.src = '';
     IMG = ''
     SONGNAME = ''
@@ -44,8 +48,10 @@ export default function Footer() {
   function playAudio(){
     if (audio){
       if (audio.current.paused){
+        playing = true;
         audio.current.play()
       } else {
+        playing = false;
         audio.current.pause()
       }
     }
@@ -95,10 +101,9 @@ export default function Footer() {
         <ShuffleIcon fontSize='large' onClick={shuffle}/>
         <SkipPreviousIcon fontSize='large' onClick={() => moveBtn(-1)} />
         {
-          audio ? 
-          <PauseCircleIcon fontSize='large' onClick={playAudio} />
-          :
-          <PlayCircleIcon fontSize='large' onClick={playAudio} />
+            (playing) 
+            ? <PauseCircleIcon fontSize='large' onClick={playAudio} />
+            : <PlayCircleIcon fontSize='large' onClick={playAudio} />
         }
         <SkipNextIcon fontSize='large' onClick={() => moveBtn(1)}/>
         <ReplayIcon fontSize='large' onClick={replay}/>

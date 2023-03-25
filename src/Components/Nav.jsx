@@ -10,8 +10,12 @@ import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import { SpotifyContext } from '../Context/SpotifyContext';
 
 export default function Nav() {
-  const {fetchFunction, setHamburgerOptions} = useContext(SpotifyContext)
-  const [savedPlaylists, setSavedPlaylists] = useState([])
+  const {
+    fetchFunction, 
+    setHamburgerOptions, 
+    savedPlaylists,
+    setSavedPlaylists
+  } = useContext(SpotifyContext)
 
   // FETCH /ME FOR USER_ID THEN /USERS/USER_ID
   useEffect(() => {
@@ -26,8 +30,37 @@ export default function Nav() {
 
   function handlePlaylist(){
     async function call(){
-      alert('TODO');
-      // const data = await fetchFunction('/me', 'POST')
+      const PORT = 'http://localhost:3001'
+      const BASE_URL = 'https://api.spotify.com/v1'
+      let access_token = null;
+      const token = await fetch(PORT + '/get_access_token');
+      const objToken = await token.json();
+      access_token = objToken.access_token;
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + access_token
+        },
+        body: JSON.stringify({
+          'name': 'New Playlist!',
+          'description': 'New playlist description',
+          'public': false
+        })
+      }
+
+      try {
+        const me = await fetchFunction('/me', 'GET')
+        const result = await fetch(BASE_URL + `/users/${me.id}/playlists`, options)
+        const data = await fetchFunction(`/users/${me.id}/playlists`, 'GET')
+        setSavedPlaylists(data.items);
+        setHamburgerOptions(data.items);
+      } catch (err){
+        console.log(err)
+      }
+
     }
     call();
   }
@@ -58,7 +91,7 @@ export default function Nav() {
           <p>Liked</p>
         </Link>
       </div>
-      <div className='nav-actions hover'>
+      <div className='nav-actions hover' style={{cursor: 'pointer'}}>
         <AddToPhotosIcon fontSize='medium' /> 
         <p onClick={handlePlaylist}>Create Playlist</p>
       </div>
