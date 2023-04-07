@@ -14,7 +14,7 @@ export default function Nav() {
     fetchFunction, 
     setHamburgerOptions, 
     savedPlaylists,
-    setSavedPlaylists
+    setSavedPlaylists, PORT
   } = useContext(SpotifyContext)
 
   // FETCH /ME FOR USER_ID THEN /USERS/USER_ID
@@ -22,15 +22,15 @@ export default function Nav() {
     async function call(){
       const user = await fetchFunction('/me', 'GET')
       const data = await fetchFunction(`/users/${user.id}/playlists`, 'GET')
-      setSavedPlaylists(data.items);
-      setHamburgerOptions(data.items);
+      console.log(data)
+      // setSavedPlaylists(data.items);
+      // setHamburgerOptions(data.items);
     }
     call()
   }, [])
 
   function handlePlaylist(){
     async function call(){
-      const PORT = 'http://localhost:3001'
       const BASE_URL = 'https://api.spotify.com/v1'
       let access_token = null;
       const token = await fetch(PORT + '/get_access_token');
@@ -55,8 +55,9 @@ export default function Nav() {
         const me = await fetchFunction('/me', 'GET')
         const result = await fetch(BASE_URL + `/users/${me.id}/playlists`, options)
         const data = await fetchFunction(`/users/${me.id}/playlists`, 'GET')
-        setSavedPlaylists(data.items);
-        setHamburgerOptions(data.items);
+        console.log(data)
+        // setSavedPlaylists(data.items);
+        // setHamburgerOptions(data.items);
       } catch (err){
         console.log(err)
       }

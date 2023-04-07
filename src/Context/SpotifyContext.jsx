@@ -58,7 +58,8 @@ const SpotifyProvider = ({children}) => {
                 songTableCoverImage,
                 setSongTableCoverImage,
                 savedPlaylists,
-                setSavedPlaylists
+                setSavedPlaylists,
+                PORT
             }}>
             {children}
         </SpotifyContext.Provider>
