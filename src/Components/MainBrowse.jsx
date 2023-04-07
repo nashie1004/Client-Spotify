@@ -34,9 +34,8 @@ export default function MainBrowse() {
     <section onScroll={scrollHeader}>
       <HeaderStickyScroll opacityState={opacity} />
       <NavDisplayBtn />
-      <h1>Genre</h1>
-      <h2>Lorem, ipsum dolor.</h2>
-      <div className="card-row-container">
+      <div className="padding" style={{padding: '1rem', minWidth: '100%'}}>
+        <div className="card-row-container">
         {
           playlists.map((item, i) => {
             return (
@@ -52,6 +51,7 @@ export default function MainBrowse() {
               )
             })
           }
+        </div>
       </div>
     </section>
   )

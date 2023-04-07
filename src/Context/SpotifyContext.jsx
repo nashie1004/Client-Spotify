@@ -2,7 +2,7 @@ import {useState, createContext} from "react";
 
 const SpotifyContext = createContext();
 
-const PORT = 'http://localhost:3001'
+const PORT = 'https://spotify2express.onrender.com'
 const BASE_URL = 'https://api.spotify.com/v1'
 
 const SpotifyProvider = ({children}) => {
