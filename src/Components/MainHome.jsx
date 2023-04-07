@@ -19,10 +19,12 @@ export default function MainHome() {
   useEffect(() => {
     setLoading(true);
     async function call(){
+      //FIX: CHECK WITHOUT GETTING DATA
       const data = await fetchFunction('/browse/new-releases?&limit=20', 'GET')
-      setCardColItems(data['albums']['items'].slice(0, 6))
-      setCardRowItems(data['albums']['items'].slice(7, 17))
-      setLoading(false)
+      console.log(data)
+      // setCardColItems(data['albums']['items'].slice(0, 6))
+      // setCardRowItems(data['albums']['items'].slice(7, 17))
+      // setLoading(false)
     }
     call()
   }, [])
