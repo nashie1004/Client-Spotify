@@ -21,7 +21,7 @@ export default function MainHome() {
     async function call(){
       //FIX: CHECK WITHOUT GETTING DATA
       const data = await fetchFunction('/browse/new-releases?&limit=20', 'GET')
-      console.log(data)
+      console.log('home call new releases:', data)
       // setCardColItems(data['albums']['items'].slice(0, 6))
       // setCardRowItems(data['albums']['items'].slice(7, 17))
       // setLoading(false)
