@@ -22,9 +22,9 @@ export default function Nav() {
     async function call(){
       const user = await fetchFunction('/me', 'GET')
       const data = await fetchFunction(`/users/${user.id}/playlists`, 'GET')
-      console.log('call user playlist:', data)
-      // setSavedPlaylists(data.items);
-      // setHamburgerOptions(data.items);
+      console.log('nav call user playlist:', data)
+      setSavedPlaylists(data.items);
+      setHamburgerOptions(data.items);
     }
     call()
   }, [])
@@ -56,8 +56,8 @@ export default function Nav() {
         const result = await fetch(BASE_URL + `/users/${me.id}/playlists`, options)
         const data = await fetchFunction(`/users/${me.id}/playlists`, 'GET')
         console.log('nav: ', data, result)
-        // setSavedPlaylists(data.items);
-        // setHamburgerOptions(data.items);
+        setSavedPlaylists(data.items);
+        setHamburgerOptions(data.items);
       } catch (err){
         console.log('nav:', err)
       }
