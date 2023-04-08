@@ -18,7 +18,9 @@ function App() {
           <div className="App">
             <Nav /> 
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Login />} />
+
+              <Route path='/home' element={<Home />} />
               <Route path='/search' element={<Search />} />
               <Route path='/liked' element={<Table type={'liked'} />} />
               <Route path='/genre/:id' element={<Browse />} />
@@ -26,8 +28,6 @@ function App() {
               <Route path='/album/:id' element={<Table type={'album'} />} />
               <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
               <Route path='/artist/:id' element={<Table type={'artist'} />} />
-              
-              <Route path='/login' element={<Login />} />
             </Routes>
             <Footer />
           </div>

@@ -75,7 +75,7 @@ export default function Nav() {
         </h2>
       </div>
       <div className='hover'>
-        <Link to='/' className='links'>
+        <Link to='/home' className='links'>
           <HomeIcon fontSize='medium' /> 
           <p>Home</p>
         </Link>   
