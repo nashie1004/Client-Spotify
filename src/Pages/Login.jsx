@@ -9,7 +9,9 @@ export default function Login() {
                 <i className="fa-brands fa-spotify"/>
                 <h1>Spotify 2.0</h1>
             </div>
-            <button>Login</button>
+            <button onClick={() => {
+              window.location.href = 'https://spotify2express.onrender.com'
+            }}>Login</button>
         </div>
     </div>
   )
