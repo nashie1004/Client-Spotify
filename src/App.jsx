@@ -1,6 +1,6 @@
 import './App.scss';
 import React from 'react'
-import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './Pages/Home';
 import Search from './Pages/Search';
 import Table from './Pages/Table';
@@ -12,13 +12,12 @@ import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 
 function App() {
-  let links = useParams()
-  console.log('useParams:', links)
+  
   return (
     <SpotifyProvider>
         <BrowserRouter>
         {
-          Object.keys(links).length === 0 ? (
+          window.location.href === 'https://spotify2react.onrender.com' || window.location.href === 'https://spotify2react.onrender.com/' ? (
             <Routes>
               <Route exact path='/' element={<Login />} />
             </Routes>
