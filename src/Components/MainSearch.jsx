@@ -81,7 +81,7 @@ export default function MainSearch() {
         <HeaderStickyScroll opacityState={opacity} child={<input onChange={displaySearchResult} className='search-bar' type='text' placeholder='Search...' /> } />
         <NavDisplayBtn />
         <div className="padding" style={{padding: '1rem', minWidth: '100%'}}>
-          <h2>Lorem, ipsum.</h2>
+          <h2>Browse Genres.</h2><br />
           <div className='card-box-container'>
             {
               categories.map((item, i) => {

@@ -26,10 +26,11 @@ function App() {
               <Route path='/album/:id' element={<Table type={'album'} />} />
               <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
               <Route path='/artist/:id' element={<Table type={'artist'} />} />
+              
+              <Route path='/login' element={<Login />} />
             </Routes>
             <Footer />
           </div>
-          {/* <Route path='/login' element={<Login />} /> */}
         </BrowserRouter>
       </SpotifyProvider>
   );

@@ -9,6 +9,10 @@ $border-color: rgb(180, 173, 173);
     height: 100%;
     display: grid;
     place-items: center;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 6;
 
     .form-login{
         border: 1px solid $border-color;

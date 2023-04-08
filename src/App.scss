@@ -34,6 +34,7 @@ body{
     grid-template-areas:
     'nav main'
     'footer footer';
+    position: relative;
 
     .nav{
         grid-area: nav;
