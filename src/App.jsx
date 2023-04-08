@@ -1,6 +1,6 @@
 import './App.scss';
 import React from 'react'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'
 import Home from './Pages/Home';
 import Search from './Pages/Search';
 import Table from './Pages/Table';
@@ -12,25 +12,35 @@ import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 
 function App() {
+  let links = useParams()
+  console.log('useParams:', links)
   return (
     <SpotifyProvider>
         <BrowserRouter>
-          <div className="App">
-            <Nav /> 
+        {
+          Object.keys(links).length === 0 ? (
             <Routes>
-              <Route path='/' element={<Login />} />
-
-              <Route path='/home' element={<Home />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/liked' element={<Table type={'liked'} />} />
-              <Route path='/genre/:id' element={<Browse />} />
-
-              <Route path='/album/:id' element={<Table type={'album'} />} />
-              <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
-              <Route path='/artist/:id' element={<Table type={'artist'} />} />
+              <Route exact path='/' element={<Login />} />
             </Routes>
-            <Footer />
-          </div>
+          ) : (
+            <div className="App">
+              <Nav />
+              <Routes>
+
+                <Route path='/home' element={<Home />} />
+                <Route path='/search' element={<Search />} />
+                <Route path='/liked' element={<Table type={'liked'} />} />
+                <Route path='/genre/:id' element={<Browse />} />
+
+                <Route path='/album/:id' element={<Table type={'album'} />} />
+                <Route path='/playlist/:id' element={<Table type={'playlist'} />} />
+                <Route path='/artist/:id' element={<Table type={'artist'} />} />
+
+              </Routes>
+              <Footer />
+            </div>
+          )
+        }
         </BrowserRouter>
       </SpotifyProvider>
   );
