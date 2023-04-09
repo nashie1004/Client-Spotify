@@ -1,6 +1,6 @@
 # Frontend for Spotify 2.0
 **[Deployed Final Project](https://spotify2react.onrender.com/)**
-**[Frontend](https://github.com/nashie1004/Client-Spotify)**
+**[Backend](https://github.com/nashie1004/Client-Spotify)**
 ### Preview: 
 ![alt text](https://github.com/nashie1004/Vite-Portfolio/blob/main/src/Assets/proj3GIF.gif?raw=true "chatApp")
 
